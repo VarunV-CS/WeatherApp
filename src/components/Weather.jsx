@@ -5,11 +5,24 @@ import humidity_icon from '../assets/humidity.png'
 import wind_icon from '../assets/wind.png'
 
 // Presenter Component - Only handles UI rendering
-const Weather = ({ inputRef, weatherData, onSearch }) => {
+const Weather = ({ cityInput, onInputChange, weatherData, onSearch }) => {
   return (
     <div className='weather'>
         <div className="search-bar">
-            <input ref={inputRef} type="text" placeholder='Search' className='bar'/>
+            <input 
+                type="text" 
+                placeholder='Search' 
+                className='bar'
+                value={cityInput}
+                onChange={onInputChange}
+                onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                        onSearch()
+                    }
+                }}
+            />
+            
+            
             <img src={search_icon} alt="" onClick={onSearch} />
         </div>
         {weatherData ? (

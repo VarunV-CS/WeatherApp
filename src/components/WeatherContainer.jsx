@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import Weather from './Weather'
 import clear_icon from '../assets/clear.png'
 import cloud_icon from '../assets/cloud.png'
@@ -7,7 +7,9 @@ import rain_icon from '../assets/rain.png'
 import snow_icon from '../assets/snow.png'
 
 const WeatherContainer = () => {
-    const inputRef = useRef()
+    
+    const [cityInput, setCityInput] = useState('')
+        
     const [weatherData, setWeatherData] = useState(false)
 
     const allIcons = {
@@ -63,12 +65,16 @@ const WeatherContainer = () => {
     }, [])
 
     const handleSearch = () => {
-        search(inputRef.current.value)
+        search(cityInput)
+    }
+    const handleInputChange = (e) => {
+        setCityInput(e.target.value)
     }
 
     return (
         <Weather 
-            inputRef={inputRef}
+            cityInput={cityInput}
+            onInputChange={handleInputChange}
             weatherData={weatherData}
             onSearch={handleSearch}
         />
