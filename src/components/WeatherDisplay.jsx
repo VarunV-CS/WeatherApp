@@ -1,5 +1,5 @@
 import React from 'react';
-import './WeatherDisplay.css';
+import '../styles/WeatherDisplay.css';
 
 const WeatherDisplay = ({ icon, temperature, location }) => {
   return (

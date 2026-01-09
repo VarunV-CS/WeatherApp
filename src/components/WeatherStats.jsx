@@ -1,7 +1,7 @@
 import React from 'react';
 import humidity_icon from '../assets/humidity.png';
 import wind_icon from '../assets/wind.png';
-import './WeatherStats.css';
+import '../styles/WeatherStats.css';
 
 const WeatherStats = ({ humidity, windSpeed }) => {
   return (

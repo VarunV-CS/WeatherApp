@@ -1,6 +1,6 @@
 import React from 'react';
 import search_icon from '../assets/search.png';
-import './SearchBar.css';
+import '..styles/SearchBar.css';
 
 const SearchBar = ({ value, onChange, onSearch }) => {
   const handleKeyPress = (e) => {

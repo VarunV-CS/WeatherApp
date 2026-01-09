@@ -1,5 +1,5 @@
 import React from 'react';
-import './Weather.css';
+import '../styles/Weather.css';
 import SearchBar from './SearchBar';
 import WeatherDisplay from './WeatherDisplay';
 import WeatherStats from './WeatherStats';
