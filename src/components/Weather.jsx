@@ -1,55 +1,32 @@
-import React from 'react'
-import '../components/Weather.css'
-import search_icon from '../assets/search.png'
-import humidity_icon from '../assets/humidity.png'
-import wind_icon from '../assets/wind.png'
+import React from 'react';
+import './Weather.css';
+import SearchBar from './SearchBar';
+import WeatherDisplay from './WeatherDisplay';
+import WeatherStats from './WeatherStats';
 
-// Presenter Component - Only handles UI rendering
 const Weather = ({ cityInput, onInputChange, weatherData, onSearch }) => {
   return (
-    <div className='weather'>
-        <div className="search-bar">
-            <input 
-                type="text" 
-                placeholder='Search' 
-                className='bar'
-                value={cityInput}
-                onChange={onInputChange}
-                onKeyPress={(e) => {
-                    if (e.key === 'Enter') {
-                        onSearch()
-                    }
-                }}
-            />
-            
-            
-            <img src={search_icon} alt="" onClick={onSearch} />
-        </div>
-        {weatherData ? (
-            <>
-                <img src={weatherData.icon} alt="" className='weather-icon'/>
-                <p className='temperature'>{weatherData.temperature}°c</p>
-                <p className='location'>{weatherData.location}</p>
-                <div className="weather-data">
-                    <div className="col">
-                        <img src={humidity_icon} alt="" />
-                        <div>
-                            <p>{weatherData.humidity} %</p>
-                            <span>Humidity</span>
-                        </div>
-                    </div>
-                    <div className="col">
-                        <img src={wind_icon} alt="" />
-                        <div>
-                            <p>{weatherData.windSpeed} km/h</p>
-                            <span>Wind Speed</span>
-                        </div>
-                    </div>
-                </div>
-            </>
-        ) : null}
+    <div className="weather">
+      <SearchBar
+        value={cityInput}
+        onChange={onInputChange}
+        onSearch={onSearch}
+      />
+      {weatherData && (
+        <>
+          <WeatherDisplay
+            icon={weatherData.icon}
+            temperature={weatherData.temperature}
+            location={weatherData.location}
+          />
+          <WeatherStats
+            humidity={weatherData.humidity}
+            windSpeed={weatherData.windSpeed}
+          />
+        </>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Weather
+export default Weather;
